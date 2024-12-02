@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desafio Fácil: Inverter String</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="licao-container">
+            <h1>Desafio Fácil: Inverter String</h1>
+            <p class="intro">
+                Neste desafio, você precisa inverter uma string. Por exemplo, se a entrada for "Desafio", a saída deve ser "oifaseD".
+            </p>
+            <h2>Exercício</h2>
+            <p>Complete o código abaixo para inverter a string:</p>
+            <textarea id="codigo1" rows="10" placeholder="function inverterString(str) {\n    // Seu código aqui\n}\n\nlet resultado = inverterString('Desafio');\nconsole.log(resultado);"></textarea>
+            <button class="menu-button" onclick="executarCodigo1()">Executar Código</button>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida1"></div>
+            </div>
+            <div class="button-container">
+                <button id="botaoDica1" class="hint-button" onclick="mostrarDica1()">Dica</button>
+            </div>
+            <button onclick="irParaModoPrincipal()" class="menu-button">Voltar ao Menu</button>
+        </div>
+    </div>
+    <script>
+        // Função para executar o código e mostrar a saída
+        function executarCodigo1() {
+            const codigo1 = document.getElementById('codigo1').value; // Obtém o código do textarea
+            const saida1 = document.getElementById('saida1');
+            saida1.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog1 = console.log;
+            console.log = function (message) {
+                saida1.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao1 = new Function(codigo1);
+                funcao1(); // Executa a função
+
+                // Verifica se o código contém a lógica correta
+                if (codigo1.includes("inverterString") && codigo1.includes("split") && codigo1.includes("reverse") && codigo1.includes("join")) {
+                    alert("Código correto! Você conseguiu inverter a string.");
+                } else {
+                    alert("Por favor, complete o código corretamente.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida1.innerHTML = 'Erro: ' + erro.message;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog1;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica1() {
+            document.getElementById('codigo1').value = `function inverterString(str) {\n    return str.split('').reverse().join('');\n}\n\nlet resultado = inverterString('Desafio');\nconsole.log(resultado);`;
+        }
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+    </script>
+</body>
+</html>

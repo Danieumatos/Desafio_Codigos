@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desafio dos Códigos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="menu-container">
+            <h1>Desafio dos Códigos</h1>
+            <button class="menu-button" onclick="irParaLicao('licao1.html')">Modo Principal</button>
+            <button class="menu-button" onclick="irParaModoDesafio()">Modo Desafio</button>
+        </div>
+        <div id="desafio-container" style="display: none;">
+            <div class="difficulty-menu">
+                <h2>Escolha a Dificuldade do Desafio</h2>
+                <button class="menu-button" onclick="irParaDesafio('facil')">Fácil</button>
+                <button class="menu-button" onclick="irParaDesafio('medio')">Médio</button>
+                <button class="menu-button" onclick="irParaDesafio('dificil')">Difícil</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

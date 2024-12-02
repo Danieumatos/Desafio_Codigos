@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lição 1: Variáveis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="menu-container">
+            <h1>Desafio dos Códigos</h1>
+            <button class="menu-button" onclick="irParaModoPrincipal()">Modo Principal</button>
+            <button class="menu-button" onclick="irParaModoDesafio()">Modo Desafio</button>
+        </div>
+        <div id="licao-container">
+            <h1>Lição 1: Introdução às Variáveis</h1>
+            <p class="intro">
+                Uma variável é um espaço na memória onde podemos armazenar dados. Em JavaScript, você pode declarar uma variável usando as palavras-chave <code>var</code>, <code>let</code> ou <code>const</code>.
+            </p>
+            <p>
+                Complete o código abaixo para declarar uma variável e exibir seu valor:
+            </p>
+            <pre>
+<code>let minhaVariavel = 'Olá, mundo!';
+
+console.log(minhaVariavel);</code>
+            </pre>
+            <p>
+                Tente alterar o valor da variável no campo abaixo e veja o que acontece!
+            </p>
+            <textarea id="codigo" rows="10" placeholder="// Cole seu código aqui"></textarea>
+            <p>
+                <button class="menu-button" onclick="executarCodigo()">Executar Código</button>
+            </p>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida"></div>
+            </div>
+            <div class="button-container">
+                <button id="proxima-licao" class="menu-button" onclick="irParaProximaLicao()">Próxima Lição</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let licaoResolvida = false; // Variável para rastrear se a lição foi resolvida
+
+        // Esconde o menu quando a página da lição for carregada
+        document.getElementById('menu-container').style.display = 'none';
+
+        // Função para executar o código e mostrar a saída
+        function executarCodigo() {
+            const codigo = document.getElementById('codigo').value; // Obtém o código do textarea
+            const saida = document.getElementById('saida');
+            saida.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog = console.log;
+            console.log = function (message) {
+                saida.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao = new Function(codigo);
+                funcao(); // Executa a função
+
+                // Verifica se o código contém a string correta
+                if (codigo.includes("minhaVariavel") && codigo.includes("console.log(minhaVariavel)")) {
+                    licaoResolvida = true; // Marca a lição como resolvida
+                    document.getElementById('proxima-licao').style.display = 'block'; // Exibe o botão da próxima lição
+                } else {
+                    licaoResolvida = false;
+                    alert("Por favor, complete a lição corretamente antes de prosseguir.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida.innerHTML = 'Erro: ' + erro.message;
+                licaoResolvida = false;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica() {
+            document.getElementById('codigo').value = "let minhaVariavel = 'Olá, mundo!';\n\nconsole.log(minhaVariavel);";
+        }
+
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+
+        // Função para navegar para Modo Desafio
+        function irParaModoDesafio() {
+            window.location.href = 'desafio.html'; // Assumindo a criação de desafio.html
+        }
+
+        // Função para navegar para a próxima lição
+        function irParaProximaLicao() {
+            if (licaoResolvida) {
+                window.location.href = 'licao2.html'; // Navega para a próxima lição
+            } else {
+                alert('Complete a Lição 1 antes de prosseguir!'); // Alerta se a lição não foi resolvida
+            }
+        }
+    </script>
+</body>
+</html>

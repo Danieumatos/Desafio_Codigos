@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lição 2: Operadores Lógicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="menu-container">
+            <h1>Desafio dos Códigos</h1>
+            <button class="menu-button" onclick="irParaModoPrincipal()">Modo Principal</button>
+            <button class="menu-button" onclick="irParaModoDesafio()">Modo Desafio</button>
+        </div>
+        <div id="licao-container">
+            <h1>Lição 2: Operadores Lógicos</h1>
+            <p class="intro">
+                Os operadores lógicos são fundamentais em programação para realizar comparações e tomar decisões com base em múltiplas condições. Os principais operadores lógicos são:
+            </p>
+            <ul>
+                <li><code>&&</code> (E): Retorna verdadeiro se ambas as condições forem verdadeiras.</li>
+                <li><code>||</code> (OU): Retorna verdadeiro se pelo menos uma das condições for verdadeira.</li>
+                <li><code>!</code> (NÃO): Inverte o valor lógico.</li>
+            </ul>
+            <p>
+                Use esses operadores para criar condições complexas e tomar decisões em seus programas.
+            </p>
+            <h2>Qual das opções abaixo representa corretamente o uso do operador "E" lógico?</h2>
+            <div id="alternativas" class="button-grid">
+                <button class="menu-button" onclick="verificarResposta(this, 'errado')">A) <code>x == 10 || y == 20</code></button>
+                <button class="menu-button" onclick="verificarResposta(this, 'errado')">B) <code>x == 10 ! y == 20</code></button>
+                <button class="menu-button" onclick="verificarResposta(this, 'certo')">C) <code>x == 10 && y == 20</code></button>
+                <button class="menu-button" onclick="verificarResposta(this, 'errado')">D) <code>x == 10 == y == 20</code></button>
+            </div>
+            <div class="output-section">
+                <p><strong>Resultado:</strong></p>
+                <div id="resultado"></div>
+            </div>
+            <div class="button-container">
+                <button id="proxima-licao" class="menu-button" onclick="irParaProximaLicao()">Próxima Lição</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let licaoResolvida2 = false; // Variável para rastrear se a lição foi resolvida
+
+        // Esconde o menu quando a página da lição for carregada
+        document.getElementById('menu-container').style.display = 'none';
+
+        // Função para verificar a resposta e mostrar o resultado
+        function verificarResposta(elemento, resposta) {
+            const resultado = document.getElementById('resultado');
+            if (resposta === 'certo') {
+                resultado.innerHTML = 'Correto! O operador "E" lógico (<code>&&</code>) retorna verdadeiro se ambas as condições forem verdadeiras.';
+                licaoResolvida2 = true; // Marca a lição como resolvida
+                document.getElementById('proxima-licao').style.display = 'block'; // Exibe o botão da próxima lição
+            } else {
+                resultado.innerHTML = 'Resposta incorreta. Tente novamente!';
+                licaoResolvida2 = false;
+            }
+        }
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+
+        // Função para navegar para Modo Desafio
+        function irParaModoDesafio() {
+            window.location.href = 'desafio.html'; // Assumindo a criação de desafio.html
+        }
+
+        // Função para navegar para a próxima lição
+        function irParaProximaLicao() {
+            if (licaoResolvida2) {
+                window.location.href = 'licao3.html'; // Navega para a próxima lição
+            } else {
+                alert('Complete a Lição 2 antes de prosseguir!'); // Alerta se a lição não foi resolvida
+            }
+        }
+    </script>
+</body>
+</html>

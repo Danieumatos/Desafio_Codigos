@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desafio Médio: Soma de Números Primos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="licao-container">
+            <h1>Desafio Médio: Soma de Números Primos</h1>
+            <p class="intro">
+                Neste desafio, você precisa encontrar a soma de todos os números primos abaixo de um determinado número. Por exemplo, se a entrada for 10, a saída deve ser 17 (2 + 3 + 5 + 7).
+            </p>
+            <h2>Exercício</h2>
+            <p>Complete o código abaixo para encontrar a soma dos números primos:</p>
+            <textarea id="codigo2" rows="10" placeholder="function somaPrimos(ate) {\n    // Seu código aqui\n}\n\nlet resultado = somaPrimos(10);\nconsole.log(resultado);"></textarea>
+            <button class="menu-button" onclick="executarCodigo2()">Executar Código</button>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida2"></div>
+            </div>
+            <div class="button-container">
+                <button id="botaoDica2" class="hint-button" onclick="mostrarDica2()">Dica</button>
+            </div>
+            <button onclick="irParaModoPrincipal()" class="menu-button">Voltar ao Menu</button>
+        </div>
+    </div>
+    <script>
+        // Função para executar o código e mostrar a saída
+        function executarCodigo2() {
+            const codigo2 = document.getElementById('codigo2').value; // Obtém o código do textarea
+            const saida2 = document.getElementById('saida2');
+            saida2.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog2 = console.log;
+            console.log = function (message) {
+                saida2.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao2 = new Function(codigo2);
+                funcao2(); // Executa a função
+
+                // Verifica se o código contém a lógica correta
+                if (codigo2.includes("somaPrimos") && codigo2.includes("isPrime") && codigo2.includes("for") && codigo2.includes("if")) {
+                    alert("Código correto! Você conseguiu encontrar a soma dos números primos.");
+                } else {
+                    alert("Por favor, complete o código corretamente.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida2.innerHTML = 'Erro: ' + erro.message;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog2;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica2() {
+            document.getElementById('codigo2').value = `function isPrime(num) {\n    for (let i = 2; i < num; i++) {\n        if (num % i === 0) return false;\n    }\n    return num > 1;\n}\n\nfunction somaPrimos(ate) {\n    let soma = 0;\n    for (let i = 2; i < ate; i++) {\n        if (isPrime(i)) soma += i;\n    }\n    return soma;\n}\n\nlet resultado = somaPrimos(10);\nconsole.log(resultado);`;
+        }
+
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+    </script>
+</body>
+</html>

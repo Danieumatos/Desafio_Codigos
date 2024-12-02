@@ -1,0 +1,223 @@
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden; /* Evita a rolagem horizontal */
+}
+
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
+  overflow: hidden;
+  z-index: -1; /* Garante que o fundo com partículas fique atrás do conteúdo */
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: move linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0); /* Partindo da posição inicial */
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, -100vh); /* Movendo-se para a parte superior direita */
+    opacity: 1;
+  }
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  min-height: 100vh; /* Altura mínima do container igual à altura da tela */
+  z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+}
+
+/* Estilos adicionais */
+#menu-container {
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com transparência */
+  padding: 20px;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 20px; /* Espaçamento abaixo do menu */
+}
+
+.menu-button {
+  background-color: #4a90e2; /* Azul */
+  color: white; /* Texto branco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+  font-size: 16px; /* Tamanho da fonte */
+  margin: 5px; /* Espaçamento entre os botões */
+  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+.menu-button:hover {
+  background-color: #357ABD; /* Escurece o fundo ao passar o mouse */
+}
+
+.hint-button {
+  background-color: #ffeb3b; /* Amarelo */
+  color: black; /* Texto preto */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+  font-size: 16px; /* Tamanho da fonte */
+  margin: 5px; /* Espaçamento entre os botões */
+  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+  font-family: 'Arial', sans-serif; /* Mantém a fonte consistente com outros botões */
+}
+
+.hint-button:hover {
+  background-color: #fdd835; /* Escurece o fundo ao passar o mouse */
+}
+
+/* Adiciona margens e espaçamento ao conteúdo da lição */
+#licao-container {
+  background-color: white; /* Fundo branco */
+  color: black; /* Cor do texto */
+  text-align: left; /* Alinhamento à esquerda */
+  padding: 30px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  width: 80%; /* Largura do container */
+  max-width: 800px; /* Largura máxima */
+  z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+  margin-top: 20px; /* Espaço acima do container */
+  line-height: 1.6; /* Altura da linha */
+  font-size: 18px; /* Tamanho da fonte */
+}
+
+.intro {
+  margin-bottom: 20px; /* Espaço abaixo do parágrafo introdutório */
+}
+
+pre {
+  background-color: #f4f4f4; /* Fundo cinza claro para o código */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  margin: 20px 0; /* Margem acima e abaixo do bloco de código */
+}
+
+#codigo3, #codigo4, #codigo5, #codigo1, #codigo2, #codigo {
+  width: 100%; /* Largura completa */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-family: monospace; /* Fonte monoespaçada */
+  margin-bottom: 20px; /* Espaço abaixo do textarea */
+  font-size: 16px; /* Tamanho da fonte */
+}
+
+.output-section {
+  margin-top: 20px; /* Espaço acima da seção de saída */
+  text-align: center; /* Centraliza o texto */
+}
+
+#saida3, #saida4, #saida5, #saida1, #saida2, #saida {
+  background-color: #f4f4f4; /* Fundo cinza claro */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-family: Arial, sans-serif; /* Fonte */
+  color: #4a90e2; /* Cor azul para a saída */
+  min-height: 50px; /* Altura mínima */
+  margin-top: 10px; /* Espaçamento acima do resultado */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Distribui os botões com espaço entre eles */
+  margin: 10px 0; /* Margem acima e abaixo dos botões */
+}
+
+/* Adiciona margens e espaçamento ao conteúdo do desafio */
+#desafio-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  min-height: 100vh; /* Altura mínima do container igual à altura da tela */
+}
+
+.difficulty-menu {
+  background-color: white; /* Fundo branco */
+  color: black; /* Cor do texto */
+  padding: 30px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  width: 90%; /* Largura do container */
+  max-width: 600px; /* Largura máxima */
+  text-align: center; /* Centraliza o texto */
+  position: relative; /* Para aplicar o pseudo-elemento */
+}
+
+.difficulty-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="blue" stroke-width="5" fill="none" /></svg>'); /* Desenho de círculo azul */
+  background-size: 20px 20px; /* Tamanho do padrão */
+  background-repeat: repeat; /* Repetir o padrão */
+  opacity: 0.1; /* Transparência do desenho */
+  z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo */
+}
+
+h2 {
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+/* Grid para botões de alternativas */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+  gap: 10px; /* Espaço entre os botões */
+}
+
+/* Estilos para a página de agradecimento */
+#agradecimento-container {
+  background-color: white; /* Fundo branco */
+  color: black; /* Cor do texto */
+  text-align: justify; /* Justifica o texto */
+  padding: 30px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  width: 80%; /* Largura do container */
+  max-width: 800px; /* Largura máxima */
+  z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+  margin-top: 20px; /* Espaço acima do container */
+  line-height: 1.6; /* Altura da linha */
+  font-size: 18px; /* Tamanho da fonte */
+}
+
+.integrantes {
+  margin-top: 20px; /* Espaço acima da lista */
+  list-style-type: none; /* Remove marcadores da lista */
+}
+
+.integrantes li {
+  margin-bottom: 10px; /* Espaço abaixo de cada item da lista */
+}

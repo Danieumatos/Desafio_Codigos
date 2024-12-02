@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desafio Difícil: Maior Produto de Dígitos Adjacentes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="licao-container">
+            <h1>Desafio Difícil: Maior Produto de Dígitos Adjacentes</h1>
+            <p class="intro">
+                Neste desafio, você precisa encontrar o maior produto de um par de dígitos adjacentes em uma série de números. Por exemplo, para a série "123456", o maior produto é 5 * 6 = 30.
+            </p>
+            <h2>Exercício</h2>
+            <p>Complete o código abaixo para encontrar o maior produto de um par de dígitos adjacentes:</p>
+            <textarea id="codigo3" rows="10" placeholder="function maiorProdutoAdjacente(numeros) {\n    // Seu código aqui\n}\n\nlet resultado = maiorProdutoAdjacente('123456');\nconsole.log(resultado);"></textarea>
+            <button class="menu-button" onclick="executarCodigo3()">Executar Código</button>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida3"></div>
+            </div>
+            <div class="button-container">
+                <button id="botaoDica3" class="hint-button" onclick="mostrarDica3()">Dica</button>
+            </div>
+            <button onclick="irParaModoPrincipal()" class="menu-button">Voltar ao Menu</button>
+        </div>
+    </div>
+    <script>
+        // Função para executar o código e mostrar a saída
+        function executarCodigo3() {
+            const codigo3 = document.getElementById('codigo3').value; // Obtém o código do textarea
+            const saida3 = document.getElementById('saida3');
+            saida3.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog3 = console.log;
+            console.log = function (message) {
+                saida3.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao3 = new Function(codigo3);
+                funcao3(); // Executa a função
+
+                // Verifica se o código contém a lógica correta
+                if (codigo3.includes("maiorProdutoAdjacente") && codigo3.includes("for") && codigo3.includes("Math.max")) {
+                    alert("Código correto! Você conseguiu encontrar o maior produto de dígitos adjacentes.");
+                } else {
+                    alert("Por favor, complete o código corretamente.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida3.innerHTML = 'Erro: ' + erro.message;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog3;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica3() {
+            document.getElementById('codigo3').value = `function maiorProdutoAdjacente(numeros) {\n    let maxProduto = 0;\n    for (let i = 0; i < numeros.length - 1; i++) {\n        const produto = parseInt(numeros[i]) * parseInt(numeros[i + 1]);\n        maxProduto = Math.max(maxProduto, produto);\n    }\n    return maxProduto;\n}\n\nlet resultado = maiorProdutoAdjacente('123456');\nconsole.log(resultado);`;
+        }
+
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+    </script>
+</body>
+</html>

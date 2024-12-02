@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lição 3: Condicionais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="menu-container">
+            <h1>Desafio dos Códigos</h1>
+            <button onclick="irParaModoPrincipal()">Modo Principal</button>
+            <button onclick="irParaModoDesafio()">Modo Desafio</button>
+        </div>
+        <div id="licao-container">
+            <h1>Lição 3: Estruturas Condicionais</h1>
+            <p class="intro">
+                As estruturas condicionais permitem que seu programa tome decisões com base em condições. Aqui estão algumas das estruturas condicionais mais comuns:
+            </p>
+            <ul>
+                <li><code>if</code>: Executa um bloco de código se uma condição for verdadeira.</li>
+                <li><code>else</code>: Executa um bloco de código se a condição do <code>if</code> for falsa.</li>
+                <li><code>else if</code>: Adiciona condições adicionais às estruturas <code>if</code>.</li>
+            </ul>
+            <pre><code>let numero = 10;
+
+if (numero > 0) {
+    console.log("O número é positivo");
+} else if (numero < 0) {
+    console.log("O número é negativo");
+} else {
+    console.log("O número é zero");
+}</code></pre>
+            <h2>Exercício</h2>
+            <p>Complete o código abaixo para verificar se uma pessoa é maior de idade (18 anos ou mais) ou menor de idade (menos de 18 anos):</p>
+            <textarea id="codigo3" rows="10" placeholder="let idade = 20;\n\n// Seu código aqui"></textarea>
+            <button class="menu-button" onclick="executarCodigo3()">Executar Código</button>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida3"></div>
+            </div>
+            <div class="button-container">
+                <button onclick="irParaModoPrincipal()" class="menu-button">Voltar ao Menu</button>
+                <button id="botaoDica" class="hint-button" onclick="mostrarDica()">Dica</button>
+                <button id="proxima-licao" onclick="irParaProximaLicao()" class="menu-button">Próxima Lição</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let licaoResolvida3 = false; // Variável para rastrear se a lição foi resolvida
+
+        // Esconde o menu quando a página da lição for carregada
+        document.getElementById('menu-container').style.display = 'none';
+
+        // Função para executar o código e mostrar a saída
+        function executarCodigo3() {
+            const codigo3 = document.getElementById('codigo3').value; // Obtém o código do textarea
+            const saida3 = document.getElementById('saida3');
+            saida3.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog3 = console.log;
+            console.log = function (message) {
+                saida3.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao3 = new Function(codigo3);
+                funcao3(); // Executa a função
+
+                // Verifica se o código contém a lógica correta
+                const resultadoCorreto = (codigo3.includes("if (idade >= 18)") || codigo3.includes("if (idade > 17)")) &&
+                                         codigo3.includes("console.log(\"Maior de idade\")") &&
+                                         codigo3.includes("console.log(\"Menor de idade\")");
+
+                if (resultadoCorreto) {
+                    licaoResolvida3 = true; // Marca a lição como resolvida
+                    document.getElementById('proxima-licao').style.display = 'block'; // Exibe o botão da próxima lição
+                } else {
+                    licaoResolvida3 = false;
+                    alert("Por favor, complete a lição corretamente antes de prosseguir.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida3.innerHTML = 'Erro: ' + erro.message;
+                licaoResolvida3 = false;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog3;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica() {
+            document.getElementById('codigo3').value = `let idade = 20;\n\nif (idade >= 18) {\n    // Seu código aqui\n}`;
+        }
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+
+        // Função para navegar para Modo Desafio
+        function irParaModoDesafio() {
+            window.location.href = 'desafio.html'; // Assumindo a criação de desafio.html
+        }
+
+        // Função para navegar para a próxima lição
+        function irParaProximaLicao() {
+            if (licaoResolvida3) {
+                window.location.href = 'licao4.html'; // Navega para a próxima lição
+            } else {
+                alert('Complete a Lição 3 antes de prosseguir!'); // Alerta se a lição não foi resolvida
+            }
+        }
+
+    </script>
+</body>
+</html>

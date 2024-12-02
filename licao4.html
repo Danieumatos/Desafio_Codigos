@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lição 4: Laço For</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <div id="menu-container">
+            <h1>Desafio dos Códigos</h1>
+            <button onclick="irParaModoPrincipal()">Modo Principal</button>
+            <button onclick="irParaModoDesafio()">Modo Desafio</button>
+        </div>
+        <div id="licao-container">
+            <h1>Lição 4: Laço For</h1>
+            <p class="intro">
+                O laço <code>for</code> é utilizado para repetir um bloco de código um número específico de vezes. Ele é muito útil quando sabemos com antecedência quantas vezes queremos executar um bloco de código.
+            </p>
+            <h2>Exemplo:</h2>
+            <pre><code>for (let i = 0; i < 5; i++) {
+    console.log("O valor de i é: " + i);
+}</code></pre>
+            <h2>Exercício</h2>
+            <p>Complete o código abaixo para imprimir os números de 1 a 10 no console:</p>
+            <textarea id="codigo4" rows="10" placeholder="// Seu código aqui"></textarea>
+            <button class="menu-button" onclick="executarCodigo4()">Executar Código</button>
+            <div class="output-section">
+                <p><strong>Saída:</strong></p>
+                <div id="saida4"></div>
+            </div>
+            <div class="button-container">
+                <button onclick="irParaModoPrincipal()" class="menu-button">Voltar ao Menu</button>
+                <button id="botaoDica4" class="hint-button" onclick="mostrarDica4()">Dica</button>
+                <button id="proxima-licao" onclick="irParaProximaLicao()" class="menu-button">Próxima Lição</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let licaoResolvida4 = false; // Variável para rastrear se a lição foi resolvida
+
+        // Esconde o menu quando a página da lição for carregada
+        document.getElementById('menu-container').style.display = 'none';
+
+        // Função para executar o código e mostrar a saída
+        function executarCodigo4() {
+            const codigo4 = document.getElementById('codigo4').value; // Obtém o código do textarea
+            const saida4 = document.getElementById('saida4');
+            saida4.innerHTML = ''; // Limpa a saída anterior
+
+            // Captura a saída do console.log
+            const originalConsoleLog4 = console.log;
+            console.log = function (message) {
+                saida4.innerHTML += message + '<br>'; // Adiciona a mensagem à div de saída
+            };
+
+            try {
+                // Usa o Function para executar o código fornecido
+                const funcao4 = new Function(codigo4);
+                funcao4(); // Executa a função
+
+                // Verifica se o código contém a lógica correta
+                if (codigo4.includes("for") && codigo4.includes("console.log") && codigo4.includes("i++")) {
+                    licaoResolvida4 = true; // Marca a lição como resolvida
+                    document.getElementById('proxima-licao').style.display = 'block'; // Exibe o botão da próxima lição
+                } else {
+                    licaoResolvida4 = false;
+                    alert("Por favor, complete a lição corretamente antes de prosseguir.");
+                }
+            } catch (erro) {
+                // Se houver um erro, exibe a mensagem de erro
+                saida4.innerHTML = 'Erro: ' + erro.message;
+                licaoResolvida4 = false;
+            } finally {
+                // Restaura o console.log original
+                console.log = originalConsoleLog4;
+            }
+        }
+
+        // Função para mostrar uma dica no textarea
+        function mostrarDica4() {
+            document.getElementById('codigo4').value = `for (let i = 1; i <= 10; i++) {\n    // Seu código aqui\n}`;
+        }
+
+
+        // Função para navegar para Modo Principal
+        function irParaModoPrincipal() {
+            window.location.href = 'index.html'; // Retorna ao menu principal
+        }
+
+        // Função para navegar para Modo Desafio
+        function irParaModoDesafio() {
+            window.location.href = 'desafio.html'; // Assumindo a criação de desafio.html
+        }
+
+        // Função para navegar para a próxima lição
+        function irParaProximaLicao() {
+            if (licaoResolvida4) {
+                window.location.href = 'licao5.html'; // Navega para a próxima lição
+            } else {
+                alert('Complete a Lição 4 antes de prosseguir!'); // Alerta se a lição não foi resolvida
+            }
+        }
+    </script>
+</body>
+</html>
